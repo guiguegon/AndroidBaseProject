@@ -7,47 +7,45 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import butterknife.InjectView;
 import es.guiguegon.androidbaseproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AbstractActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    @InjectView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    @InjectView(R.id.navigation_view)
     NavigationView navigationView;
+    @InjectView(R.id.fab)
     FloatingActionButton fab;
+    @InjectView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
-        setSupportActionBar(toolbar);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        actionBarDrawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Snackbar.make(drawerLayout, menuItem.getTitle(), Snackbar.LENGTH_LONG)
-                        .show();
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }
-        });
     }
 
+    @Override
+    protected void fillUi(Bundle savedInstanceState) {
+        setToolbar(toolbar);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        fab.setOnClickListener(this);
+    }
+
+    /**
+     * Options
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -67,5 +65,27 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Click Listeners
+     */
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            default:
+                Snackbar.make(drawerLayout, menuItem.getTitle(), Snackbar.LENGTH_LONG)
+                        .show();
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            default:
+                Snackbar.make(v, "fab", Snackbar.LENGTH_LONG).show();
+        }
     }
 }
