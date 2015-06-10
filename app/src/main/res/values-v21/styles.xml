@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme -->
     <style name="AppStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- defining colors -->
@@ -13,19 +12,10 @@
         <!-- defining ui elements -->
         <item name="drawerArrowStyle">@style/AppStyle.WhiteDrawerIconStyle</item>
 
-        <!-- API 15-20 only -->
-        <item name="colorButtonNormal">@color/app_primary_color</item>
+        <!-- API 21 only -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:colorButtonNormal">@color/app_primary_color</item>
     </style>
 
-    <style name="AppStyle.WhiteDrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">true</item>
-        <item name="color">@color/color_white</item>
-    </style>
-
-    <!-- General elements -->
-
-    <style name="AppStyle.Toolbar" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:textColorSecondary">@color/color_white</item>
-    </style>
 
 </resources>

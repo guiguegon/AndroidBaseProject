@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">AndroidBaseProject</string>
+    <string name="app_name">Android Base Project</string>
+
+    <string name="action_settings">Preferencias</string>
+
+    <!-- Navigation View titles -->
+    <string name="navigation_subheader_1">Subcabecera 1</string>
+    <string name="navigation_subheader_2">Subcabecera 2</string>
+    <string name="navigation_sub_item_1">Opción 1</string>
+    <string name="navigation_sub_item_2">Opcion 2</string>
+    <string name="navigation_sub_item_3">Opcion 3</string>
+    <string name="navigation_sub_item_4">Opcion 4</string>
+
 </resources>
