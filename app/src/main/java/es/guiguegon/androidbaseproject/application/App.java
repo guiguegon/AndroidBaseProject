@@ -1,10 +1,18 @@
 package es.guiguegon.androidbaseproject.application;
 
 import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
+import android.location.LocationManager;
 
-import es.guiguegon.androidbaseproject.interfaces.ILogProvider;
+import javax.inject.Inject;
+
+import es.guiguegon.androidbaseproject.modules.AppComponent;
+import es.guiguegon.androidbaseproject.modules.AppModule;
+import es.guiguegon.androidbaseproject.modules.DaggerAppComponent;
+import es.guiguegon.androidbaseproject.modules.DaggerRestComponent;
+import es.guiguegon.androidbaseproject.providers.RestProvider;
+import es.guiguegon.androidbaseproject.providers.interfaces.ILogProvider;
 import es.guiguegon.androidbaseproject.providers.LogProviderFactory;
+import es.guiguegon.androidbaseproject.providers.interfaces.IRestProvider;
 
 /**
  * Created by guillermo.guerrero on 28/05/2015.
@@ -20,10 +28,9 @@ public class App extends Application {
      */
     protected final String TAG = this.getClass().getSimpleName();
     ILogProvider _logProvider;
-
-    public static App getInstance() {
-        return _instance;
-    }
+    @Inject
+    LocationManager locationManager;
+    private AppComponent applicationComponent;
 
     @Override
     public void onCreate() {
@@ -31,7 +38,14 @@ public class App extends Application {
         _logProvider = LogProviderFactory.getLogProvider();
         _logProvider.v(TAG, "onCreate");
 
-        if (_instance == null) _instance = this;
+        applicationComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
 
+                .build();
+
+    }
+
+    public AppComponent component() {
+        return applicationComponent;
     }
 }

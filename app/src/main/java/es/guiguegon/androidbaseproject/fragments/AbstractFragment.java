@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
-import es.guiguegon.androidbaseproject.interfaces.ILogProvider;
+import es.guiguegon.androidbaseproject.providers.interfaces.ILogProvider;
 import es.guiguegon.androidbaseproject.providers.LogProviderFactory;
 
 /**

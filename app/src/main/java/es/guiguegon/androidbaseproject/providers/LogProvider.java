@@ -2,7 +2,7 @@ package es.guiguegon.androidbaseproject.providers;
 
 import android.util.Log;
 
-import es.guiguegon.androidbaseproject.interfaces.ILogProvider;
+import es.guiguegon.androidbaseproject.providers.interfaces.ILogProvider;
 
 /**
  * Created by guillermo.guerrero on 26/05/2015.
@@ -31,6 +31,12 @@ class LogProvider implements ILogProvider {
     }
 
     public void e(String TAG, String log) {
-        if (debug) Log.e(TAG, log);
+        // if is an error print it always
+        // added try/catch to avoid nullpointers
+        try {
+            Log.e(TAG, log);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

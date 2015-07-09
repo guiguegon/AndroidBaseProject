@@ -12,8 +12,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import butterknife.InjectView;
 import es.guiguegon.androidbaseproject.R;
+import es.guiguegon.androidbaseproject.providers.RestProvider;
 
 public class MainActivity extends AbstractActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -25,6 +28,8 @@ public class MainActivity extends AbstractActivity implements NavigationView.OnN
     FloatingActionButton fab;
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
+    @Inject
+    RestProvider restProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,6 @@ public class MainActivity extends AbstractActivity implements NavigationView.OnN
     @Override
     protected void fillUi(Bundle savedInstanceState) {
         setToolbar(toolbar);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();

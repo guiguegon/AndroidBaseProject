@@ -1,9 +1,7 @@
 package es.guiguegon.androidbaseproject.providers;
 
-import android.util.Log;
-
 import es.guiguegon.androidbaseproject.BuildConfig;
-import es.guiguegon.androidbaseproject.interfaces.ILogProvider;
+import es.guiguegon.androidbaseproject.providers.interfaces.ILogProvider;
 
 /**
  * Created by guillermo.guerrero on 26/05/2015.

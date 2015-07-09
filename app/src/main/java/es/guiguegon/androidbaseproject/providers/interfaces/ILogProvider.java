@@ -1,4 +1,4 @@
-package es.guiguegon.androidbaseproject.interfaces;
+package es.guiguegon.androidbaseproject.providers.interfaces;
 
 /**
  * Created by guillermo.guerrero on 26/05/2015.

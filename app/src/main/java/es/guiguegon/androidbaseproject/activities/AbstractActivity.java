@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
-import es.guiguegon.androidbaseproject.interfaces.ILogProvider;
+import es.guiguegon.androidbaseproject.providers.interfaces.ILogProvider;
 import es.guiguegon.androidbaseproject.providers.LogProviderFactory;
 
 
